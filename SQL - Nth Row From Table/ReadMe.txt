@@ -1,0 +1,1 @@
+Use Data file to create tables in your local db and then you can use solution file to run query successfully
