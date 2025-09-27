@@ -1,0 +1,10 @@
+SELECT * FROM Students1
+SELECT * FROM Students2
+
+SELECT Name
+FROM Students1
+INTERSECT
+SELECT Name
+FROM Students2
+
+

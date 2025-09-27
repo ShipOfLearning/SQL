@@ -1,0 +1,6 @@
+SELECT * FROM Students1
+SELECT * FROM Students2
+
+SELECT Name FROM Students1
+EXCEPT
+SELECT NAME FROM Students2
