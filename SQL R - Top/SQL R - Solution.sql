@@ -1,0 +1,9 @@
+SELECT * FROM Employees
+
+SELECT TOP 3 WITH TIES * 
+FROM Employees
+ORDER BY Salary DESC
+
+SELECT TOP 30 PERCENT * 
+FROM Employees
+ORDER BY Salary DESC
