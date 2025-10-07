@@ -1,0 +1,7 @@
+--SELECT * FROM Employees
+
+SELECT NAME,Department,
+COALESCE(Email,PHONE,'NOT PROVIDED') AS CONTACT
+FROM Employees
+
+

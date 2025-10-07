@@ -1,0 +1,3 @@
+SELECT * FROM Employees
+SELECT Name,ISNULL( Email,'NOT PROVIDED') AS EMAIL
+FROM Employees
