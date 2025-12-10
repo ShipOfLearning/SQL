@@ -1,0 +1,17 @@
+-- FIND THE PRODUCT WHICH IS NEVER ORDERED
+SELECT * FROM Product
+SELECT * FROM Orders
+
+-- SUB QUERY
+SELECT ProductID,ProductName 
+FROM Product WHERE ProductID NOT IN (
+SELECT DISTINCT ProductID
+FROM Orders)
+
+-- JOIN
+SELECT 
+	P.ProductID,P.ProductName
+FROM Product P
+LEFT JOIN Orders O
+ON P.ProductID = O.ProductID
+WHERE O.OrderID IS NULL
