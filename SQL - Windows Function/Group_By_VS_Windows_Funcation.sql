@@ -1,0 +1,13 @@
+SELECT *
+FROM Employees
+
+SELECT
+	Department,
+	AVG(Salary) AS AVG_SALARY
+FROM Employees
+GROUP BY Department
+
+SELECT
+	EmpName,Department,Salary,
+	AVG(SALARY) OVER(PARTITION BY DEPARTMENT) AS DEPT_AVG_SALARY
+FROM Employees

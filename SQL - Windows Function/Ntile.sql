@@ -1,0 +1,4 @@
+SELECT
+	EmpName,Salary,Department,
+	NTILE(4) OVER (ORDER BY SALARY DESC) AS BAND
+FROM Employees
