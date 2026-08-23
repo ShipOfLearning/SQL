@@ -1,0 +1,55 @@
+-- @ShipOfLearning
+-- Windows Funcaiton Sum(), AVG(),Count(), Min(), Max()
+
+SELECT * FROM Employees
+SELECT * FROM SalesTransactions
+
+-- MOVING TOTAL
+SELECT
+	SalesPerson,SaleDate,Amount,
+	SUM(Amount) OVER (PARTITION BY SalesPerson ORDER BY SaleDate
+	ROWS BETWEEN 2 PRECEDING AND CURRENT ROW ) AS MT
+FROM SalesTransactions
+
+-- RUNNING TOTAL 
+SELECT 
+	SalesPerson,SaleDate,Amount,
+	SUM(Amount) OVER(PARTITION BY SalesPerson ORDER BY SALEDATE
+	ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS TOTAL
+FROM SalesTransactions
+
+-- MAX WINDOWS FUNCTION
+SELECT
+	EmpName,Department,Salary,
+	MAX(Salary) OVER (PARTITION BY DEPARTMENT) AS MAXSALARY
+FROM Employees
+
+-- MIN WINDOWS FUNCTION
+SELECT
+	EmpName,Department,Salary,
+	MIN(Salary) OVER (PARTITION BY DEPARTMENT) AS MINSALARY
+FROM Employees
+
+-- COUNT WINDOWS FUNCTION
+SELECT
+	EmpName,Department,Salary,
+	COUNT(Salary) OVER (PARTITION BY DEPARTMENT) AS HEADCOUNT
+FROM Employees
+
+-- AVG WINDOWS FUNCTION
+SELECT
+	EmpName,Department,Salary,
+	AVG(Salary) OVER (PARTITION BY DEPARTMENT) AS AVGSALARY
+FROM Employees
+
+-- SUM WINDOWS FUNCTION
+SELECT
+	Department,EmpName,SALARY,
+	SUM(Salary) OVER (PARTITION BY DEPARTMENT)
+FROM Employees
+
+--Group by Query
+SELECT
+	Department,	SUM(Salary) as salary
+FROM Employees
+GROUP BY Department
