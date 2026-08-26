@@ -1,0 +1,21 @@
+-- @ShipOfLearning (AMAZON,GOOGLE,FACEBOOK)
+-- TempID Repeat Pattern
+
+SELECT * FROM TempID_Table
+
+;WITH RCTE AS
+(
+	SELECT
+		TempID, 1 AS CNT
+	FROM TempID_Table
+	UNION ALL
+	SELECT 
+		TempID, CNT + 1
+	FROM RCTE
+	WHERE CNT < TempID
+)
+SELECT 
+	TempID
+FROM RCTE
+
+ORDER BY TempID
