@@ -1,0 +1,22 @@
+-- @ShipOfLearning
+-- Salary Increase > 30%
+SELECT * FROM EmpSalaryHistory
+
+;WITH CTE AS (
+SELECT
+	EmpID,EmpName,Salary,
+	LAG(Salary) OVER
+	(
+		PARTITION BY EMPID 
+		ORDER BY SALARYDATE
+	) AS PS,
+	ROW_NUMBER() OVER
+	(
+		PARTITION BY EMPID
+		ORDER BY SALARYDATE DESC
+	) AS RN
+FROM EmpSalaryHistory)
+SELECT *,
+	((SALARY - PS) * 100 / PS) SALARYDIFFPER
+FROM CTE WHERE RN = 1  AND PS IS NOT NULL
+AND SALARY > (PS * 1.30)
