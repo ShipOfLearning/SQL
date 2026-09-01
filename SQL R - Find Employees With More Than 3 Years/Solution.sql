@@ -1,0 +1,12 @@
+-- @ShipOfLearning
+-- Find Employees With More Than 3 Years
+SELECT * FROM Employees
+
+SELECT
+	EmployeeID,EmployeeName,Department,
+	DATEDIFF(DAY,HIREDATE,
+		ISNULL(RESIGNDATE,GETDATE()))/365.25 AS TENURE
+FROM Employees
+WHERE HireDate IS NOT NULL AND 
+DATEDIFF(DAY,HIREDATE,
+		ISNULL(RESIGNDATE,GETDATE()))/365.25 > 3
