@@ -1,0 +1,26 @@
+-- @ShipOfLearning
+-- Find Median Salary
+SELECT * FROM Employees
+
+;WITH CTE AS 
+(
+	SELECT
+		Salary,
+		ROW_NUMBER() OVER
+		(
+			ORDER BY SALARY ASC
+		) ASC_SALARY,
+		ROW_NUMBER() OVER
+		(
+			ORDER BY SALARY DESC
+		) DESC_SALARY
+	FROM Employees
+)
+SELECT
+	AVG(Salary) MEDIAN
+FROM CTE
+WHERE
+	ASC_SALARY = DESC_SALARY OR
+	ASC_SALARY + 1 = DESC_SALARY OR
+	ASC_SALARY = DESC_SALARY + 1
+	
