@@ -11,3 +11,18 @@ SELECT
 FROM Orders
 WHERE
 	OrderStatus = 'Completed'
+
+
+-- EMPLOYEE WISE QUERY
+SELECT
+	CustomerID,CustomerName,
+	COUNT(*)		AS TOTAL_ORDER,
+	MIN(OrderAmount)	AS MIN_VALUE,
+	MAX(OrderAmount)	AS MAX_VALUE,
+	SUM(OrderAmount)	AS SUM_VALUE,
+	AVG(OrderAmount)	AS AVG_VALUE
+FROM Orders
+WHERE
+	OrderStatus = 'Completed'
+GROUP BY 
+	CustomerID,CustomerName
