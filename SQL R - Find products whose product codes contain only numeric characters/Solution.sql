@@ -10,4 +10,4 @@ SELECT
 FROM Products
 WHERE
 	DATALENGTH(ProductCode) > 0 AND
-	ProductCode COLLATE Latin1_General_100_BIN2 NOT LIKE '%[^0-9]%'
+	ProductCode COLLATE Latin1_General_100_BIN2  LIKE '%[0-9]%'
